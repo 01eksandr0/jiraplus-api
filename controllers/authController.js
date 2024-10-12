@@ -52,3 +52,9 @@ export const logoutUser = async (req, res) => {
   await User.findByIdAndUpdate(_id, { token: null });
   res.status(204).json();
 };
+
+export const currentUser = async (req, res) => {
+  const { _id } = req.user;
+  const user = await User.findOne({ _id });
+  res.status(200).json(user);
+};
