@@ -17,6 +17,13 @@ const project = new Schema({
       required: false,
     },
   ],
+  tasks: [
+    {
+      type: Types.ObjectId,
+      ref: "tasks",
+      required: false,
+    },
+  ],
 });
 
 export const Project = model("projects", project);

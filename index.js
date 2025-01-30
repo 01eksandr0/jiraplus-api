@@ -8,6 +8,7 @@ import authRouter from "./routes/authRouter.js";
 import projectsRouter from "./routes/projectsRouter.js";
 import tasksRouter from "./routes/tasksRouter.js";
 import usersRouter from "./routes/usersRouter.js";
+import sudgestRouter from "./routes/sudgestRoutes.js";
 
 configDotenv();
 const URL = process.env.URL_DB || "";
@@ -23,6 +24,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/projects", projectsRouter);
 app.use("/api/tasks", tasksRouter);
 app.use("/api/users", usersRouter);
+app.use("/api/sudgest", sudgestRouter);
 
 app.use((_, res) => {
   res.status(404).json({ message: "Route not found" });
