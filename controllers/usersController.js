@@ -28,7 +28,7 @@ export const getUsersSudgest = async (req, res, next) => {
     const id = req?.params?.id;
 
     if (!search) {
-      return res.status(400).json({ message: "Search query is required" });
+      return res.status(200).json([]);
     }
 
     if (id === "users") {
