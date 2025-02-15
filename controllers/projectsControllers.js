@@ -34,7 +34,7 @@ export const getProgectsUser = async (req, res) => {
 
 export const getOneProgect = async (req, res) => {
   try {
-    const project = await Project.findById(req.params.id);
+    const project = await Project.findById(req.params.id).populate("tasks");
     res.json(project);
   } catch (error) {}
 };

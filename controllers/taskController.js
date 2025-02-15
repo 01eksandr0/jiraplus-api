@@ -1,9 +1,15 @@
+import { Project } from "../models/project.js";
 import { Task } from "../models/task.js";
 
 export const addOneTask = async (req, res, next) => {
   try {
     const { _id } = req.user;
     const task = await Task.create({ ...req.body, creater: _id });
+    if (req?.body?.project) {
+      await Project.findByIdAndUpdate(req?.body?.project, {
+        $push: { tasks: task._id },
+      });
+    }
     res.status(201).json(task);
   } catch (error) {
     console.error(error);
